@@ -1,17 +1,17 @@
-
 public class Guest {
+    // Данные гостя
     private String name;
     private String email;
     private String phoneNumber;
 
-    // Constructor
+    // Конструктор
     public Guest(String name, String email, String phoneNumber) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
 
-    // Getters and Setters
+    // Геттеры и сеттеры
     public String getName() {
         return name;
     }
@@ -40,8 +40,21 @@ public class Guest {
     public String toString() {
         return "Guest{" +
                 "name='" + name + '\'' +
-        ", email='" + email + '\'' +
-        ", phoneNumber='" + phoneNumber + '\'' +
-        '}';
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Guest guest = (Guest) obj;
+        return email.equals(guest.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return email.hashCode();
     }
 }
