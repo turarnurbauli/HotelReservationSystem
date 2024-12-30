@@ -1,17 +1,16 @@
-
 public class Booking {
     private Room room;
     private Guest guest;
     private int numberOfNights;
 
-    // Constructor
+    // Конструктор
     public Booking(Room room, Guest guest, int numberOfNights) {
         this.room = room;
         this.guest = guest;
         this.numberOfNights = numberOfNights;
     }
 
-    // Getters and Setters
+    // Геттеры и сеттеры
     public Room getRoom() {
         return room;
     }
@@ -43,5 +42,18 @@ public class Booking {
                 ", guest=" + guest +
                 ", numberOfNights=" + numberOfNights +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Booking booking = (Booking) obj;
+        return room.equals(booking.room) && guest.equals(booking.guest);
+    }
+
+    @Override
+    public int hashCode() {
+        return room.hashCode() + guest.hashCode();
     }
 }
