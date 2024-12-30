@@ -1,11 +1,11 @@
-
 public class Room {
+    // Уникальный идентификатор комнаты
     private int roomNumber;
     private String type;
     private double pricePerNight;
     private boolean isAvailable;
 
-    // Constructor
+    // Конструктор
     public Room(int roomNumber, String type, double pricePerNight, boolean isAvailable) {
         this.roomNumber = roomNumber;
         this.type = type;
@@ -13,7 +13,7 @@ public class Room {
         this.isAvailable = isAvailable;
     }
 
-    // Getters and Setters
+    // Геттеры и сеттеры
     public int getRoomNumber() {
         return roomNumber;
     }
@@ -46,13 +46,35 @@ public class Room {
         isAvailable = available;
     }
 
+    public void bookRoom() {
+        if (isAvailable) {
+            isAvailable = false;
+            System.out.println("Room " + roomNumber + " successfully booked.");
+        } else {
+            System.out.println("Room " + roomNumber + " is already booked.");
+        }
+    }
+
     @Override
     public String toString() {
         return "Room{" +
                 "roomNumber=" + roomNumber +
                 ", type='" + type + '\'' +
-        ", pricePerNight=" + pricePerNight +
+                ", pricePerNight=" + pricePerNight +
                 ", isAvailable=" + isAvailable +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Room room = (Room) obj;
+        return roomNumber == room.roomNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(roomNumber);
     }
 }
