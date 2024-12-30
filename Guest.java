@@ -1,46 +1,47 @@
-public class Booking {
-    private Room room;
-    private Guest guest;
-    private int numberOfNights;
+public class Guest {
+    // Данные гостя
+    private String name;
+    private String email;
+    private String phoneNumber;
 
     // Конструктор
-    public Booking(Room room, Guest guest, int numberOfNights) {
-        this.room = room;
-        this.guest = guest;
-        this.numberOfNights = numberOfNights;
+    public Guest(String name, String email, String phoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     // Геттеры и сеттеры
-    public Room getRoom() {
-        return room;
+    public String getName() {
+        return name;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Guest getGuest() {
-        return guest;
+    public String getEmail() {
+        return email;
     }
 
-    public void setGuest(Guest guest) {
-        this.guest = guest;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getNumberOfNights() {
-        return numberOfNights;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setNumberOfNights(int numberOfNights) {
-        this.numberOfNights = numberOfNights;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
     public String toString() {
-        return "Booking{" +
-                "room=" + room +
-                ", guest=" + guest +
-                ", numberOfNights=" + numberOfNights +
+        return "Guest{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 
@@ -48,12 +49,12 @@ public class Booking {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Booking booking = (Booking) obj;
-        return room.equals(booking.room) && guest.equals(booking.guest);
+        Guest guest = (Guest) obj;
+        return email.equals(guest.email);
     }
 
     @Override
     public int hashCode() {
-        return room.hashCode() + guest.hashCode();
+        return email.hashCode();
     }
 }
